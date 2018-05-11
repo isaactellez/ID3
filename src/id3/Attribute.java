@@ -3,13 +3,14 @@ package id3;
 import java.util.*;
 
 public class Attribute {
-    String nombre;
+    String name;
     Map<String, Integer> m;
     double entropy;
+    int count = 0;
+
+    Attribute(String n){
         
-    public void Atributo(String n){
-        
-        nombre = n;
+        name = n;
         m = new HashMap<>();
         entropy = 1000;
         
@@ -18,20 +19,18 @@ public class Attribute {
     public void addValue(String v){
         
         if(!m.containsKey(v)){
-            m.put(v, 0);
+            m.put(v, 1);
         }else{
             m.put(v, m.get(v) + 1);
         }
         
+        count++;
+        
     }
     
-    public double getEntropy(){
+    public void setEntropy(double ent){
         
-        double ent=0;
-        
-        
-        
-        return ent;
+        entropy = ent;
         
     }
     
