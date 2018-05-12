@@ -49,6 +49,7 @@ public class ID3 {
                 
                 System.out.println("Dame el nombre de archivo (con extension) donde se encuentra el data set:");
                 String file = br.readLine();
+                file = "C:\\Users\\HTELLEZB\\Downloads\\ID3-master\\src\\id3\\" + file;
                 FileReader fr = null;
                 BufferedReader br2 = null;
                 table = new ArrayList<>();
@@ -122,16 +123,17 @@ public class ID3 {
                         Iterator it2 = atributos[atributos.length-1].m.entrySet().iterator();
                         while(it2.hasNext()){
                             
-                            String eval = pair.getKey().toString();
+                            Map.Entry pair2 = (Map.Entry)it2.next();
+                            String eval = pair2.getKey().toString();
                             
                             //Contar ocurrencias individuales (de c/valor posible de evaluacion) para calcular logaritmos
-                            if(table.get(j)[i].equals(val) && table.get(j)[table.size()-1].equals(eval)){
+                            if(table.get(j)[i].equals(val) && table.get(j)[table.get(0).length-1].equals(eval)){
                                 ocuInd++;
                             }
                             
                             log += (ocuInd/ocu) * log((ocuInd/ocu),2);
                             
-                            it2.remove();
+                            //it2.remove();
                             
                         }
                         
