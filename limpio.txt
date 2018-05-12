@@ -1,3 +1,0 @@
-subiendo,norte,F,
-bajando,norte,F,
-subiendo,sur,F,
