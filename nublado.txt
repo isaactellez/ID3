@@ -1,0 +1,5 @@
+subiendo,sur,T,
+estable,norte,T,
+bajando,norte,T,
+subiendo,norte,T,
+bajando,sur,F,

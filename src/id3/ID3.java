@@ -6,6 +6,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ID3 {
     
@@ -55,7 +59,8 @@ public class ID3 {
                 
                 System.out.println("Dame el nombre de archivo (con extension) donde se encuentra el data set:");
                 String file = br.readLine();
-                file = "C:\\Users\\HTELLEZB\\Downloads\\ID3-master\\src\\id3\\" + file;
+                //INSERTAR LINEA CON EL PATH AQUI DEBAJO
+                file = "/home/marco/repos/ID3/src/id3/" + file;
                 FileReader fr = null;
                 BufferedReader br2 = null;
                 table = new ArrayList<>();
@@ -105,9 +110,11 @@ public class ID3 {
                 //System.out.println("tabla: " + table.get(2)[1]);
 	}
         
-        public static void entropy(){
+        public static void entropy() throws IOException{
+            double minimaEntropia = 100;
+            int minIndex = -10;
             
-            for (int i=0; i<atributos.length ; i++){
+            for (int i=0; i<atributos.length-1 ; i++){
                 
                 double ent = 0;
                 double log = 0;
@@ -154,7 +161,7 @@ public class ID3 {
 //                        }
 //                    }
                     
-                    it.remove();
+                    //it.remove();
                     //System.out.println("Val: " + val + " Ocu: " + ocu);
                     
                     //Calcular entropia segun el numero de posibles valores y el total de datos en el atributo
@@ -163,10 +170,46 @@ public class ID3 {
                 }
                 
                 atributos[i].setEntropy(ent);
+                if(ent < minimaEntropia) {
+                    minIndex = i;
+                    minimaEntropia = ent;
+                }
                 System.out.println(ent);
             
             }
         
+            /*
+            Creamos archivos de texto para guardar las tablas correspondientes a cada uno de los valores
+            de aquel atributo con la máxima entropía.
+            */         
+            Iterator iter = atributos[minIndex].m.entrySet().iterator();
+            //int posiblesValoresAtributo = atributos[minIndex].m.size();
+            List<String> lines = new ArrayList<String>();
+            
+            while(iter.hasNext()) {
+                Map.Entry valorAtributoEntrada = (Map.Entry)iter.next();
+                String valorAtributo = valorAtributoEntrada.getKey().toString();
+                
+                for (int i = 0; i<table.size(); i++) {    
+                    StringBuilder sb = new StringBuilder();
+                    
+                    if(table.get(i)[minIndex].equals(valorAtributo)) {
+                        for(int j = 0; j < table.get(i).length; j++) {
+                            if(j != minIndex) {
+                                sb.append(table.get(i)[j]);
+                                sb.append(",");
+                            }
+                        }
+                        sb.deleteCharAt(sb.length()-1);
+                        lines.add(sb.toString());
+                    }
+                }
+                
+                Path file = Paths.get("./src/id3/" + valorAtributo + ".txt");
+                Files.write(file, lines, Charset.forName("UTF-8"));
+                lines.clear();
+            }
+            
         }
 
 	public static void main(String[] args) throws IOException {
