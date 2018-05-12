@@ -14,8 +14,14 @@ public class ID3 {
     static ArrayList<String[]> table;
     static int cols;
     
-    static double log(int x, int base){
-        return (Math.log(x) / Math.log(base));
+    static double log(double x, double base){
+        
+        if(x==0){
+            return 0;
+        }else{
+            return (Math.log(x) / Math.log(base));
+        }
+        
     }
 
 	public static void input () throws IOException {
@@ -105,6 +111,7 @@ public class ID3 {
                 
                 double ent = 0;
                 double log = 0;
+                int ocuInd;
                 
                 System.out.println("Atributo " + atributos[i].name);
                 //Iterando el mapa de cada atributo
@@ -116,26 +123,28 @@ public class ID3 {
                     String val = pair.getKey().toString();
                     int ocu = Integer.parseInt(pair.getValue().toString());
                     
-                    int ocuInd = 0;
-                    for(int j=0; j<table.size(); j++){
+                    //Iterar la columna de evaluacion para saber que resultados se buscan
+                    Iterator it2 = atributos[atributos.length-1].m.entrySet().iterator();
+                    log = 0;
+                    while(it2.hasNext()){
                         
-                        //Iterar la columna de evaluacion para saber que resultados se buscan
-                        Iterator it2 = atributos[atributos.length-1].m.entrySet().iterator();
-                        while(it2.hasNext()){
-                            
-                            Map.Entry pair2 = (Map.Entry)it2.next();
-                            String eval = pair2.getKey().toString();
+                        ocuInd = 0;
+                    
+                        Map.Entry pair2 = (Map.Entry)it2.next();
+                        String eval = pair2.getKey().toString();
+                        
+                        for(int j=0; j<table.size(); j++){
                             
                             //Contar ocurrencias individuales (de c/valor posible de evaluacion) para calcular logaritmos
                             if(table.get(j)[i].equals(val) && table.get(j)[table.get(0).length-1].equals(eval)){
                                 ocuInd++;
                             }
                             
-                            log += (ocuInd/ocu) * log((ocuInd/ocu),2);
-                            
                             //it2.remove();
                             
                         }
+                        
+                        log += ((double)ocuInd/ocu) * log(((double)ocuInd/ocu),2);
                         
                     }
                     
@@ -149,11 +158,12 @@ public class ID3 {
                     //System.out.println("Val: " + val + " Ocu: " + ocu);
                     
                     //Calcular entropia segun el numero de posibles valores y el total de datos en el atributo
-                    ent += (ocu/atributos[i].count) * (-log);
+                    ent += ((double)ocu/(double)atributos[i].count) * (-log);
                     
                 }
                 
                 atributos[i].setEntropy(ent);
+                System.out.println(ent);
             
             }
         
