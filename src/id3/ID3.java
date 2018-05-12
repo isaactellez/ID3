@@ -99,28 +99,59 @@ public class ID3 {
 	}
         
         public static void entropy(){
-        
-            double ent;
             
-            for (Attribute atributo : atributos){
+            for (int i=0; i<atributos.length ; i++){
                 
-                System.out.println("Atributo " + atributo.name);
+                double ent = 0;
+                double log = 0;
+                
+                System.out.println("Atributo " + atributos[i].name);
                 //Iterando el mapa de cada atributo
-                Iterator it = atributo.m.entrySet().iterator();
+                Iterator it = atributos[i].m.entrySet().iterator();
                 while (it.hasNext()){
                     
                     Map.Entry pair = (Map.Entry)it.next();
                     //Guardando el valor de cada entrada en el mapa, asi como su ocurrencia
                     String val = pair.getKey().toString();
                     int ocu = Integer.parseInt(pair.getValue().toString());
-                    it.remove();
-                    System.out.println("Val: " + val + " Ocu: " + ocu);
-                    //Calcular entropia segun el numero de posibles valores
-                    //ent = ;
                     
-                    //atributo.setEntropy(ent);
+                    int ocuInd = 0;
+                    for(int j=0; j<table.size(); j++){
+                        
+                        //Iterar la columna de evaluacion para saber que resultados se buscan
+                        Iterator it2 = atributos[atributos.length-1].m.entrySet().iterator();
+                        while(it2.hasNext()){
+                            
+                            String eval = pair.getKey().toString();
+                            
+                            //Contar ocurrencias individuales (de c/valor posible de evaluacion) para calcular logaritmos
+                            if(table.get(j)[i].equals(val) && table.get(j)[table.size()-1].equals(eval)){
+                                ocuInd++;
+                            }
+                            
+                            log += (ocuInd/ocu) * log((ocuInd/ocu),2);
+                            
+                            it2.remove();
+                            
+                        }
+                        
+                    }
+                    
+//                    if(i==atributos.length-1){
+//                        for(int j=0; j<atributos.length; j++){
+//                            atributos[j].eval.add(val);
+//                        }
+//                    }
+                    
+                    it.remove();
+                    //System.out.println("Val: " + val + " Ocu: " + ocu);
+                    
+                    //Calcular entropia segun el numero de posibles valores y el total de datos en el atributo
+                    ent += (ocu/atributos[i].count) * (-log);
                     
                 }
+                
+                atributos[i].setEntropy(ent);
             
             }
         
