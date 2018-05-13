@@ -98,7 +98,7 @@ public class ID3 {
 			try {
 
 				if (br2 != null)
-					br.close();
+					//br.close();
 
 				if (fr != null)
 					fr.close();
