@@ -19,6 +19,9 @@ public class ID3 {
     static int cols;
     static Attribute chosenOne;
     static Map<String,ArrayList<Object>> arbolito = new HashMap<>();
+    static boolean finished = true; //para detectar si este ID3 termina el procedimiento general.
+    static ArrayList<String> porAbrir = new ArrayList<String>();
+    static String father = "NIL";
     
     static double log(double x, double base){
         
@@ -29,7 +32,10 @@ public class ID3 {
         }
         
     }
-
+        public ID3() {
+            
+        }
+        
 	public static void input () throws IOException {
             
 		int n;
@@ -63,6 +69,78 @@ public class ID3 {
                 String file = br.readLine();
                 //INSERTAR LINEA CON EL PATH AQUI DEBAJO
                 file = "/home/marco/repos/ID3/src/id3/" + file;
+                FileReader fr = null;
+                BufferedReader br2 = null;
+                table = new ArrayList<>();
+                
+                try {
+                        
+                        fr = new FileReader(file);
+			br2 = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br2.readLine()) != null) {
+				//System.out.println(sCurrentLine);
+                                String [] parts = sCurrentLine.split(",");
+                                table.add(parts);
+                                for(int i=0; i<n; i++){
+                                    atributos[i].addValue(parts[i]);
+                                }
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (br2 != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+
+		}
+                
+                //Leer archivo
+                
+                //Prueba
+                //System.out.println("Atributo: " + atributos[0].name + " Cuenta: " + atributos[0].count + " Valor: " + atributos[0].m.get("limpio").toString());
+                //System.out.println("tabla: " + table.get(2)[1]);
+	}
+        
+        public static void input (String nombreArchivo) throws IOException {
+            
+		int n;
+                List<Map<String,Integer>> maps = new ArrayList<>();
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println("Dame el numero de atributos del data set: ");
+		n = Integer.parseInt(br.readLine());
+                cols = n;
+                atributos = new Attribute[n];
+
+		for(int i=0; i<n ;i++){
+                    
+                    System.out.println("Dame el atributo " + i + " (en orden): ");
+                    String a = br.readLine();
+                    
+                    atributos[i] = new Attribute(a);
+                    
+		}
+                
+                //INSERTAR LINEA CON EL PATH AQUI DEBAJO
+                String file = "/home/marco/repos/ID3/src/id3/" + nombreArchivo + ".txt";
                 FileReader fr = null;
                 BufferedReader br2 = null;
                 table = new ArrayList<>();
@@ -193,6 +271,7 @@ public class ID3 {
             while(iter.hasNext()) {
                 Map.Entry valorAtributoEntrada = (Map.Entry)iter.next();
                 String valorAtributo = valorAtributoEntrada.getKey().toString();
+                porAbrir.add(valorAtributo);
                 String aComparar = "";
                 String resultado = ""; //Para ver a que me lleva cada valor del atributo.
                 boolean endPoint = true; //Variable para revisar si ese camino puede darnos un resultado.
@@ -213,6 +292,7 @@ public class ID3 {
                                     resultado = table.get(i)[j];
                                     
                                     endPoint = resultado.equals(aComparar);
+                                    finished = finished && endPoint;
                                 }
                             }
                         }
