@@ -7,6 +7,7 @@ public class Attribute {
     Map<String, Integer> m;
     double entropy;
     int count = 0;
+    //Map<String,Boolean> tree;
 
     Attribute(String n){
         
@@ -20,6 +21,7 @@ public class Attribute {
         
         if(!m.containsKey(v)){
             m.put(v, 1);
+            //tree.put(v,null);
         }else{
             m.put(v, m.get(v) + 1);
         }

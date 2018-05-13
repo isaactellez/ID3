@@ -17,6 +17,8 @@ public class ID3 {
     static String target;
     static ArrayList<String[]> table;
     static int cols;
+    static Attribute chosenOne;
+    static Map<String,ArrayList<Object>> arbolito = new HashMap<>();
     
     static double log(double x, double base){
         
@@ -178,6 +180,8 @@ public class ID3 {
             
             }
         
+            chosenOne = atributos[minIndex]; //Almacenamos el atributo de minima entropia.
+            
             /*
             Creamos archivos de texto para guardar las tablas correspondientes a cada uno de los valores
             de aquel atributo con la máxima entropía.
@@ -189,6 +193,9 @@ public class ID3 {
             while(iter.hasNext()) {
                 Map.Entry valorAtributoEntrada = (Map.Entry)iter.next();
                 String valorAtributo = valorAtributoEntrada.getKey().toString();
+                String aComparar = "";
+                String resultado = ""; //Para ver a que me lleva cada valor del atributo.
+                boolean endPoint = true; //Variable para revisar si ese camino puede darnos un resultado.
                 
                 for (int i = 0; i<table.size(); i++) {    
                     StringBuilder sb = new StringBuilder();
@@ -198,6 +205,15 @@ public class ID3 {
                             if(j != minIndex) {
                                 sb.append(table.get(i)[j]);
                                 sb.append(",");
+                                
+                                if(endPoint && j == table.get(i).length-1) {
+                                    if(aComparar.equals("")) {
+                                        aComparar = table.get(i)[j];
+                                    }
+                                    resultado = table.get(i)[j];
+                                    
+                                    endPoint = resultado.equals(aComparar);
+                                }
                             }
                         }
                         sb.deleteCharAt(sb.length()-1);
@@ -205,18 +221,23 @@ public class ID3 {
                     }
                 }
                 
+                ArrayList <Object> lista = new ArrayList<Object>();
+                lista.add(endPoint);
+                lista.add(resultado);
+                arbolito.put(valorAtributo, lista);
+                
                 Path file = Paths.get("./src/id3/" + valorAtributo + ".txt");
                 Files.write(file, lines, Charset.forName("UTF-8"));
                 lines.clear();
             }
-            
+               
         }
-
+        
 	public static void main(String[] args) throws IOException {
             
             input();
             entropy();
-            
+       	
 	}
 
 }
