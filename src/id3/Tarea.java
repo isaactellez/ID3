@@ -7,6 +7,8 @@ package id3;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
@@ -15,7 +17,6 @@ import java.util.ArrayList;
 public class Tarea {
             
     public static void main(String[] args) throws IOException {
-        int numeroAtributos = 4;
         //int j = 0;
         boolean exit = false;
         ArrayList<ID3> listado = new ArrayList<>();
@@ -39,10 +40,13 @@ public class Tarea {
                         tabla.input(atributo,i.noEscogidos);
                         tabla.entropy();
                         tabla.father = atributo;
+                        tabla.papa = i;
                         listado.add(tabla);
                     }
                 }
                 i.finished = true;
+                
+                //System.out.println(i.chosenOne.name);
             }
             
             exit = true;
@@ -52,6 +56,41 @@ public class Tarea {
             }
 
             copiaListado = new ArrayList(listado);
+        }
+        
+        for (ID3 id : listado) {
+            Iterator it = id.arbolito.entrySet().iterator();
+            ArrayList<Object> lista;
+            
+            while(it.hasNext()) {
+                Map.Entry par = (Map.Entry)it.next();
+                lista = (ArrayList<Object>) par.getValue();
+                
+                if((boolean)lista.get(0)) {
+                    System.out.print(lista.get(1).toString());
+                    System.out.print(" <- ");
+                    //System.out.print("(");
+                    System.out.print(par.getKey().toString());
+                    System.out.print(" = ");
+                    System.out.print(id.chosenOne.name);
+                    
+                    ID3 aux = new ID3();
+                    aux = id;
+                    
+                    while(aux.papa != null) {
+                        System.out.print(" ^ ");
+                        System.out.print(aux.father);
+                        System.out.print(" = ");
+                        System.out.print(aux.papa.chosenOne.name);
+                        aux = aux.papa;
+                        System.out.print("");
+                    }
+                    
+                    System.out.print(" IF ");
+                    System.out.println("\n");
+            
+                }
+            }
         }
     }
 }

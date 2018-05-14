@@ -23,6 +23,7 @@ public class ID3 {
     public ArrayList<String> porAbrir = new ArrayList<String>();
     public String father = "NIL";
     public String[] noEscogidos;
+    public ID3 papa = null;
     
     static double log(double x, double base){
         
@@ -35,6 +36,10 @@ public class ID3 {
     }
         public ID3() {
             
+        }
+        
+        public ID3(ID3 i) {
+            papa = i;
         }
         
 	public void input () throws IOException {
@@ -121,6 +126,7 @@ public class ID3 {
         
         public void input (String nombreArchivo, String[] nombresAtributos) throws IOException {
             
+                father = nombreArchivo;
 		int n = nombresAtributos.length;
                 List<Map<String,Integer>> maps = new ArrayList<>();
 
@@ -135,7 +141,6 @@ public class ID3 {
                     
                     //System.out.println("Dame el atributo " + i + " (en orden): ");
                     String a = nombresAtributos[i];
-                    
                     atributos[i] = new Attribute(a);
                     
 		}
@@ -203,7 +208,7 @@ public class ID3 {
                 double log = 0;
                 int ocuInd;
                 
-                System.out.println("Atributo " + atributos[i].name);
+                //System.out.println("Atributo " + atributos[i].name);
                 //Iterando el mapa de cada atributo
                 Iterator it = atributos[i].m.entrySet().iterator();
                 while (it.hasNext()){
@@ -257,12 +262,12 @@ public class ID3 {
                     minIndex = i;
                     minimaEntropia = ent;
                 }
-                System.out.println(ent);
+                //System.out.println(ent);
             
             }
         
             chosenOne = atributos[minIndex]; //Almacenamos el atributo de minima entropia.
-            
+            //System.out.println(chosenOne.name);
             /*
             Creamos archivos de texto para guardar las tablas correspondientes a cada uno de los valores
             de aquel atributo con la máxima entropía.
@@ -315,9 +320,11 @@ public class ID3 {
             }
              
             noEscogidos = new String[atributos.length -1];
+            int index = 0;
             for (int i = 0; i<atributos.length-1; i++) {
                 if (i != minIndex) {
-                    noEscogidos[i] = atributos[i].name;
+                    noEscogidos[index] = atributos[i].name;
+                    index = index+1;
                 }
             }
             
