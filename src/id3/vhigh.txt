@@ -1,0 +1,12 @@
+2,small,unacc
+2,med,unacc
+2,big,acc
+3,small,unacc
+3,med,acc
+3,big,acc
+4,small,unacc
+4,med,acc
+4,big,acc
+5more,small,unacc
+5more,med,acc
+5more,big,acc

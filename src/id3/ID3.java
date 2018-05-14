@@ -279,7 +279,7 @@ public class ID3 {
             while(iter.hasNext()) {
                 Map.Entry valorAtributoEntrada = (Map.Entry)iter.next();
                 String valorAtributo = valorAtributoEntrada.getKey().toString();
-                porAbrir.add(valorAtributo);
+                //porAbrir.add(valorAtributo);
                 String aComparar = "";
                 String resultado = ""; //Para ver a que me lleva cada valor del atributo.
                 boolean endPoint = true; //Variable para revisar si ese camino puede darnos un resultado.
@@ -309,6 +309,10 @@ public class ID3 {
                     }
                 }
                 
+                if(!endPoint) {
+                    porAbrir.add(valorAtributo);
+                }
+                
                 ArrayList <Object> lista = new ArrayList<Object>();
                 lista.add(endPoint);
                 lista.add(resultado);
@@ -321,7 +325,7 @@ public class ID3 {
              
             noEscogidos = new String[atributos.length -1];
             int index = 0;
-            for (int i = 0; i<atributos.length-1; i++) {
+            for (int i = 0; i<atributos.length-1; i++) { //atributos.length NO MENOS 1
                 if (i != minIndex) {
                     noEscogidos[index] = atributos[i].name;
                     index = index+1;
@@ -330,12 +334,12 @@ public class ID3 {
             
         }
         
-	public static void main(String[] args) throws IOException {
-            
-            ID3 test = new ID3();
-            test.input();
-            test.entropy();
-       	
-	}
+//	public static void main(String[] args) throws IOException {
+//            
+//            ID3 test = new ID3();
+//            test.input();
+//            test.entropy();
+//       	
+//	}
 
 }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  *
@@ -29,6 +30,8 @@ public class Tarea {
         ID3 i;
         
         copiaListado = new ArrayList(listado);
+        
+        Stack pila = new Stack();
         
         while(!exit) {
             for (int ii = 0; ii < copiaListado.size(); ii++) {
@@ -67,28 +70,42 @@ public class Tarea {
                 lista = (ArrayList<Object>) par.getValue();
                 
                 if((boolean)lista.get(0)) {
-                    System.out.print(lista.get(1).toString());
-                    System.out.print(" <- ");
+                    pila.push("\n");
+                    //System.out.print(lista.get(1).toString());
+                    pila.push(lista.get(1).toString());
+                    //System.out.print(" <- ");
+                    pila.push(" -> ");
                     //System.out.print("(");
-                    System.out.print(par.getKey().toString());
-                    System.out.print(" = ");
-                    System.out.print(id.chosenOne.name);
+                    //System.out.print(par.getKey().toString());
+                    pila.push(par.getKey().toString());
+                    //System.out.print(" = ");
+                    pila.push(" = ");
+                    //System.out.print(id.chosenOne.name);
+                    pila.push(id.chosenOne.name);
                     
                     ID3 aux = new ID3();
                     aux = id;
                     
                     while(aux.papa != null) {
-                        System.out.print(" ^ ");
-                        System.out.print(aux.father);
-                        System.out.print(" = ");
-                        System.out.print(aux.papa.chosenOne.name);
+                        //System.out.print(" ^ ");
+                        pila.push(" ^ ");
+                        //System.out.print(aux.father);
+                        pila.push(aux.father);
+                        //System.out.print(" = ");
+                        pila.push(" = ");
+                        //System.out.print(aux.papa.chosenOne.name);
+                        pila.push(aux.papa.chosenOne.name);
                         aux = aux.papa;
-                        System.out.print("");
+                        //System.out.print("");
                     }
                     
-                    System.out.print(" IF ");
-                    System.out.println("\n");
+                    //System.out.print(" IF ");
+                    pila.push("IF ");
+                    //System.out.println("\n");
             
+                    while(!pila.empty()) {
+                        System.out.print(pila.pop());
+                    }
                 }
             }
         }

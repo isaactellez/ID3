@@ -1,0 +1,16 @@
+vhigh,2,unacc
+vhigh,3,unacc
+vhigh,4,unacc
+vhigh,5more,unacc
+high,2,acc
+high,3,acc
+high,4,acc
+high,5more,acc
+med,2,acc
+med,3,acc
+med,4,acc
+med,5more,acc
+low,2,acc
+low,3,acc
+low,4,acc
+low,5more,acc

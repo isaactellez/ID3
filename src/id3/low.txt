@@ -1,0 +1,12 @@
+2,small,unacc
+2,med,acc
+2,big,good
+3,small,acc
+3,med,good
+3,big,good
+4,small,acc
+4,med,good
+4,big,good
+5more,small,acc
+5more,med,good
+5more,big,good
