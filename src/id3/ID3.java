@@ -13,15 +13,16 @@ import java.nio.file.Paths;
 
 public class ID3 {
     
-    static Attribute[] atributos;
-    static String target;
-    static ArrayList<String[]> table;
-    static int cols;
-    static Attribute chosenOne;
-    static Map<String,ArrayList<Object>> arbolito = new HashMap<>();
-    static boolean finished = true; //para detectar si este ID3 termina el procedimiento general.
-    static ArrayList<String> porAbrir = new ArrayList<String>();
-    static String father = "NIL";
+    public Attribute[] atributos;
+    public String target;
+    public ArrayList<String[]> table;
+    public int cols;
+    public Attribute chosenOne;
+    public Map<String,ArrayList<Object>> arbolito = new HashMap<>();
+    public boolean finished = true; //para detectar si este ID3 termina el procedimiento general.
+    public ArrayList<String> porAbrir = new ArrayList<String>();
+    public String father = "NIL";
+    public String[] noEscogidos;
     
     static double log(double x, double base){
         
@@ -36,7 +37,7 @@ public class ID3 {
             
         }
         
-	public static void input () throws IOException {
+	public void input () throws IOException {
             
 		int n;
                 List<Map<String,Integer>> maps = new ArrayList<>();
@@ -118,22 +119,22 @@ public class ID3 {
                 //System.out.println("tabla: " + table.get(2)[1]);
 	}
         
-        public static void input (String nombreArchivo) throws IOException {
+        public void input (String nombreArchivo, String[] nombresAtributos) throws IOException {
             
-		int n;
+		int n = nombresAtributos.length;
                 List<Map<String,Integer>> maps = new ArrayList<>();
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		System.out.println("Dame el numero de atributos del data set: ");
-		n = Integer.parseInt(br.readLine());
+		//System.out.println("Dame el numero de atributos del data set: ");
+		//n = Integer.parseInt(br.readLine());
                 cols = n;
                 atributos = new Attribute[n];
 
 		for(int i=0; i<n ;i++){
                     
-                    System.out.println("Dame el atributo " + i + " (en orden): ");
-                    String a = br.readLine();
+                    //System.out.println("Dame el atributo " + i + " (en orden): ");
+                    String a = nombresAtributos[i];
                     
                     atributos[i] = new Attribute(a);
                     
@@ -165,12 +166,14 @@ public class ID3 {
 
 			e.printStackTrace();
 
-		} finally {
+		} 
+                
+                finally {
 
 			try {
 
 				if (br2 != null)
-					br.close();
+					//br.close();
 
 				if (fr != null)
 					fr.close();
@@ -190,7 +193,7 @@ public class ID3 {
                 //System.out.println("tabla: " + table.get(2)[1]);
 	}
         
-        public static void entropy() throws IOException{
+        public void entropy() throws IOException{
             double minimaEntropia = 100;
             int minIndex = -10;
             
@@ -310,13 +313,21 @@ public class ID3 {
                 Files.write(file, lines, Charset.forName("UTF-8"));
                 lines.clear();
             }
-               
+             
+            noEscogidos = new String[atributos.length -1];
+            for (int i = 0; i<atributos.length-1; i++) {
+                if (i != minIndex) {
+                    noEscogidos[i] = atributos[i].name;
+                }
+            }
+            
         }
         
 	public static void main(String[] args) throws IOException {
             
-            input();
-            entropy();
+            ID3 test = new ID3();
+            test.input();
+            test.entropy();
        	
 	}
 

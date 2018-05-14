@@ -25,16 +25,18 @@ public class Tarea {
         id3.input();
         id3.entropy();
         listado.add(id3);
+        ID3 i;
         
-        copiaListado = listado;
+        copiaListado = new ArrayList(listado);
         
         while(!exit) {
-            for (ID3 i : copiaListado) {
+            for (int ii = 0; ii < copiaListado.size(); ii++) {
+                i = copiaListado.get(ii);
                 if(!i.finished) {
                     for (String atributo : i.porAbrir) {
-                        System.out.println(atributo);
+                        //System.out.println(atributo);
                         ID3 tabla = new ID3();
-                        tabla.input(atributo);
+                        tabla.input(atributo,i.noEscogidos);
                         tabla.entropy();
                         tabla.father = atributo;
                         listado.add(tabla);
@@ -49,7 +51,7 @@ public class Tarea {
                 exit = exit && j.finished;
             }
 
-            copiaListado = listado;
+            copiaListado = new ArrayList(listado);
         }
     }
 }

@@ -1,2 +1,2 @@
-norte,F
-sur,F
+sur,T
+norte,T
