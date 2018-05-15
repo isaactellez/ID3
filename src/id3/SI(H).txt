@@ -1,0 +1,2 @@
+BAJA(U),NO(G),NO(T)
+NORMAL(U),SI(G),NO(T)

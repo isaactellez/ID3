@@ -1,0 +1,11 @@
+ Private, Never-married, White, Male, >50K
+ Private, Divorced, White, Female, >50K
+ Self-emp-inc, Divorced, White, Male, >50K
+ State-gov, Never-married, White, Female, >50K
+ Federal-gov, Divorced, White, Female, >50K
+ Self-emp-not-inc, Divorced, White, Female, <=50K
+ State-gov, Never-married, White, Female, >50K
+ State-gov, Never-married, White, Female, >50K
+ State-gov, Never-married, White, Female, >50K
+ Federal-gov, Widowed, White, Male, >50K
+ Local-gov, Divorced, White, Female, >50K

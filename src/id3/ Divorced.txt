@@ -1,0 +1,4 @@
+ White, Male, <=50K
+ White, Male, >50K
+ White, Female, >50K
+ White, Female, <=50K

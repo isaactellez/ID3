@@ -1,0 +1,11 @@
+ Private, Bachelors, White, Female, United-States, <=50K
+ Private, Some-college, White, Female, United-States, <=50K
+ Private, Some-college, White, Female, United-States, <=50K
+ Private, Assoc-voc, White, Male, United-States, <=50K
+ Private, Some-college, White, Female, United-States, <=50K
+ Local-gov, Assoc-acdm, White, Male, United-States, <=50K
+ Private, Assoc-acdm, White, Female, United-States, <=50K
+ Private, HS-grad, White, Male, United-States, <=50K
+ Private, Assoc-voc, White, Male, United-States, <=50K
+ Private, HS-grad, Asian-Pac-Islander, Female, United-States, <=50K
+ Private, Bachelors, White, Male, United-States, <=50K

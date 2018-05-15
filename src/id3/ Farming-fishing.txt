@@ -1,0 +1,4 @@
+ Self-emp-not-inc, HS-grad, White, Male, United-States, <=50K
+ Local-gov, HS-grad, Asian-Pac-Islander, Male, United-States, <=50K
+ Self-emp-not-inc, HS-grad, White, Male, United-States, <=50K
+ Private, 12th, White, Male, United-States, <=50K

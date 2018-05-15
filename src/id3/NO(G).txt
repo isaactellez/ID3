@@ -1,0 +1,2 @@
+BAJA(U),NO(H),SI(T)
+NORMAL(U),SI(H),SI(T)

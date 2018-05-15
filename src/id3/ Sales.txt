@@ -1,0 +1,2 @@
+ Private, Divorced, White, Male, >50K
+ Self-emp-not-inc, Divorced, White, Male, <=50K

@@ -1,0 +1,4 @@
+ALTA(U),SI(G),NO(H),SI(T)
+BAJA(U),NO(G),SI(H),SI(T)
+NORMAL(U),SI(G),SI(H),SI(T)
+ALTA(U),NO(G),NO(H),SI(T)

@@ -1,0 +1,3 @@
+ Widowed, White, Female, <=50K
+ Never-married, White, Male, >50K
+ Never-married, White, Male, <=50K

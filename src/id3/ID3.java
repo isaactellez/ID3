@@ -160,10 +160,12 @@ public class ID3 {
 
 			while ((sCurrentLine = br2.readLine()) != null) {
 				//System.out.println(sCurrentLine);
-                                String [] parts = sCurrentLine.split(",");
-                                table.add(parts);
-                                for(int i=0; i<n; i++){
-                                    atributos[i].addValue(parts[i]);
+                                if(!sCurrentLine.equals("")) {
+                                    String [] parts = sCurrentLine.split(",");
+                                    table.add(parts);
+                                    for(int i=0; i<parts.length; i++){
+                                        atributos[i].addValue(parts[i]);
+                                    }
                                 }
 			}
 
@@ -304,8 +306,10 @@ public class ID3 {
                                 }
                             }
                         }
-                        sb.deleteCharAt(sb.length()-1);
-                        lines.add(sb.toString());
+                        if(sb.length() != 0) {
+                            sb.deleteCharAt(sb.length()-1);
+                            lines.add(sb.toString());
+                        }
                     }
                 }
                 

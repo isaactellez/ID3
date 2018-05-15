@@ -1,0 +1,2 @@
+ Federal-gov, White, Male, United-States, <=50K
+ Private, White, Male, United-States, >50K

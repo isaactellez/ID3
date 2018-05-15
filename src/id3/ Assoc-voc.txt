@@ -1,0 +1,2 @@
+ State-gov, White, Male, United-States, <=50K
+ Federal-gov, Black, Female, United-States, <=50K

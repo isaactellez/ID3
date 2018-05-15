@@ -1,0 +1,2 @@
+ White, Male, United-States, <=50K
+ White, Male, United-States, <=50K

@@ -1,0 +1,9 @@
+ Private, HS-grad, White, Male, United-States, <=50K
+ State-gov, HS-grad, Other, Male, United-States, <=50K
+ Federal-gov, Some-college, White, Male, United-States, <=50K
+ Private, 12th, White, Male, Mexico, <=50K
+ Local-gov, HS-grad, White, Male, United-States, <=50K
+ Private, HS-grad, White, Female, United-States, <=50K
+ Local-gov, Assoc-voc, White, Female, Cuba, <=50K
+ Local-gov, HS-grad, White, Female, United-States, <=50K
+ Local-gov, Assoc-voc, Asian-Pac-Islander, Male, United-States, <=50K

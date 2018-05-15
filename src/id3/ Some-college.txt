@@ -1,0 +1,17 @@
+ Self-emp-not-inc, White, Male, United-States, <=50K
+ Federal-gov, White, Male, United-States, <=50K
+ Private, White, Female, United-States, >50K
+ Private, White, Female, United-States, <=50K
+ State-gov, White, Male, United-States, <=50K
+ Private, White, Female, United-States, <=50K
+ Private, White, Female, United-States, <=50K
+ State-gov, White, Male, United-States, <=50K
+ State-gov, White, Female, United-States, <=50K
+ Self-emp-inc, White, Female, United-States, <=50K
+ Federal-gov, White, Male, United-States, <=50K
+ Local-gov, White, Female, United-States, <=50K
+ Private, White, Female, United-States, <=50K
+ Private, White, Female, United-States, <=50K
+ Private, Black, Female, United-States, <=50K
+ Private, White, Male, United-States, >50K
+ State-gov, White, Male, United-States, <=50K

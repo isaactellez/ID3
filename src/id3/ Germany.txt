@@ -1,0 +1,2 @@
+ Private, Never-married, Prof-specialty, White, Female, >50K
+ Private, Never-married, Prof-specialty, White, Male, <=50K

@@ -1,0 +1,2 @@
+ Private, Married-spouse-absent, Prof-specialty, Asian-Pac-Islander, Male, <=50K
+ State-gov, Married-civ-spouse, Prof-specialty, Asian-Pac-Islander, Male, <=50K

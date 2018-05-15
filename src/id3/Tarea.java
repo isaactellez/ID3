@@ -61,6 +61,8 @@ public class Tarea {
             copiaListado = new ArrayList(listado);
         }
         
+        System.out.println("\n" + "Reglas de producción:");
+        
         for (ID3 id : listado) {
             Iterator it = id.arbolito.entrySet().iterator();
             ArrayList<Object> lista;

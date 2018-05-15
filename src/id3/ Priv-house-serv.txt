@@ -1,0 +1,2 @@
+ Private, HS-grad, White, Female, United-States, <=50K
+ Private, 7th-8th, Black, Female, United-States, <=50K

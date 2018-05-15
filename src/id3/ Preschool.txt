@@ -1,0 +1,5 @@
+ Private, Other-service, White, Male, United-States, <=50K
+ Private, Machine-op-inspct, White, Female, United-States, <=50K
+ Local-gov, Handlers-cleaners, White, Female, United-States, <=50K
+ Private, Other-service, White, Female, United-States, <=50K
+ Local-gov, Adm-clerical, Black, Female, United-States, <=50K

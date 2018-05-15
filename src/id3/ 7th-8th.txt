@@ -1,0 +1,2 @@
+ ?, ?, White, Male, United-States, <=50K
+ Private, Handlers-cleaners, White, Male, Mexico, <=50K

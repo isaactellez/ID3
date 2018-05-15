@@ -1,0 +1,14 @@
+ Local-gov, HS-grad, White, Male, United-States, <=50K
+ Private, HS-grad, White, Male, United-States, <=50K
+ Private, HS-grad, White, Male, United-States, <=50K
+ Private, 10th, White, Male, United-States, <=50K
+ Private, HS-grad, White, Female, United-States, <=50K
+ Private, Some-college, White, Male, United-States, <=50K
+ Private, 11th, White, Male, United-States, <=50K
+ Private, 12th, White, Male, United-States, <=50K
+ Private, 11th, White, Male, United-States, <=50K
+ Private, Bachelors, Black, Male, United-States, <=50K
+ Private, HS-grad, White, Male, United-States, <=50K
+ Private, Some-college, White, Male, United-States, <=50K
+ Private, HS-grad, Black, Male, United-States, <=50K
+ Private, HS-grad, White, Male, United-States, <=50K

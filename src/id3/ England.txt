@@ -1,0 +1,3 @@
+ Private, Never-married, Prof-specialty, White, Male, <=50K
+ Private, Never-married, Prof-specialty, White, Male, <=50K
+ State-gov, Never-married, Prof-specialty, White, Female, <=50K

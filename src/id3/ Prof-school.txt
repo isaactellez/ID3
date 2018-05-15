@@ -1,0 +1,2 @@
+ Private, White, Female, United-States, <=50K
+ State-gov, Asian-Pac-Islander, Female, Philippines, <=50K
